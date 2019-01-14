@@ -13,7 +13,7 @@ public class VideoStoreTest {
 
     @Test
     public void testSingleNewReleaseStatementTotals() {
-        statement.addRental(new Rental(new Movie("The Cell", Movie.NEW_RELEASE), 3));
+        statement.addRental(new Rental(new NewReleaseMovie("The Cell"), 3));
         statement.generate();
         assertEquals(9.0d, statement.getTotal(), 0);
         assertEquals(2, statement.getFrequentRenterPoints());
@@ -21,8 +21,8 @@ public class VideoStoreTest {
 
     @Test
     public void testDualNewReleaseStatementTotals() {
-        statement.addRental(new Rental(new Movie("The Cell", Movie.NEW_RELEASE), 3));
-        statement.addRental(new Rental(new Movie("The Tigger Movie", Movie.NEW_RELEASE), 3));
+        statement.addRental(new Rental(new NewReleaseMovie("The Cell"), 3));
+        statement.addRental(new Rental(new NewReleaseMovie("The Tigger Movie"), 3));
         statement.generate();
         assertEquals(18.0, statement.getTotal(), 0);
         assertEquals(4, statement.getFrequentRenterPoints());
@@ -30,7 +30,7 @@ public class VideoStoreTest {
 
     @Test
     public void testSingleChildrenStatementTotals() {
-        statement.addRental(new Rental(new Movie("The Tigger Movie", Movie.CHILDRENS), 3));
+        statement.addRental(new Rental(new ChildrensMovie("The Tigger Movie"), 3));
         statement.generate();
         assertEquals(1.5, statement.getTotal(), 0);
         assertEquals(1, statement.getFrequentRenterPoints());
@@ -38,9 +38,9 @@ public class VideoStoreTest {
 
     @Test
     public void testMultipleRegularStatementTotals() {
-        statement.addRental(new Rental(new Movie("Plan 9 from Outer Space", Movie.REGULAR), 1));
-        statement.addRental(new Rental(new Movie("8 1/2", Movie.REGULAR), 2));
-        statement.addRental(new Rental(new Movie("Eraserhead", Movie.REGULAR), 3));
+        statement.addRental(new Rental(new RegularMovie("Plan 9 from Outer Space"), 1));
+        statement.addRental(new Rental(new RegularMovie("8 1/2"), 2));
+        statement.addRental(new Rental(new RegularMovie("Eraserhead"), 3));
         statement.generate();
         assertEquals(7.5, statement.getTotal(), 0);
         assertEquals(3, statement.getFrequentRenterPoints());
@@ -48,9 +48,9 @@ public class VideoStoreTest {
 
     @Test
     public void testMultipleRegularStatementFormat() {
-        statement.addRental(new Rental(new Movie("Plan 9 from Outer Space", Movie.REGULAR), 1));
-        statement.addRental(new Rental(new Movie("8 1/2", Movie.REGULAR), 2));
-        statement.addRental(new Rental(new Movie("Eraserhead", Movie.REGULAR), 3));
+        statement.addRental(new Rental(new RegularMovie("Plan 9 from Outer Space"), 1));
+        statement.addRental(new Rental(new RegularMovie("8 1/2"), 2));
+        statement.addRental(new Rental(new RegularMovie("Eraserhead"), 3));
         assertEquals(
                 "Rental Record for Customer\n" +
                         "\tPlan 9 from Outer Space\t2.0\n" +

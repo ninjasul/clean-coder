@@ -1,3 +1,11 @@
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Movie {
 
     public static final int CHILDRENS = 2;
@@ -5,22 +13,5 @@ public class Movie {
     public static final int REGULAR = 0;
 
     private String title;
-    private int pricecode;
-
-    public Movie(String title, int priceCode) {
-        this.title = title;
-        pricecode = priceCode;
-    }
-
-    public int getPriceCode() {
-        return pricecode;
-    }
-
-    public void setPriceCode(int arg) {
-        pricecode = arg;
-    }
-
-    public String getTitle() {
-        return title;
-    }
+    private int priceCode;
 }
